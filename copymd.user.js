@@ -33,6 +33,11 @@
     strongDelimiter: "**",
     linkStyle: "inlined",
     preformattedCode: true,
+
+    // Never output inline HTML, even if keep rules are set (by a plugin).
+    keepReplacement: function (content, node) {
+      return node.isBlock ? "\n\n" + content + "\n\n" : content;
+    },
   });
   turndown.use(turndownPluginGfm.gfm);
 
