@@ -19,6 +19,10 @@
 (function () {
   "use strict";
 
+  const ja = navigator.language.startsWith("ja");
+  const labelSelection = ja ? "選択範囲を Markdown としてコピー" : "Copy Selection as Markdown";
+  const labelArticle = ja ? "記事全文を Markdown としてコピー" : "Copy Article as Markdown";
+
   const turndown = new TurndownService({
     headingStyle: "atx",
     hr: "---",
@@ -31,10 +35,6 @@
     preformattedCode: true,
   });
   turndown.use(turndownPluginGfm.gfm);
-
-  const ja = navigator.language.startsWith("ja");
-  const labelSelection = ja ? "選択範囲を Markdown としてコピー" : "Copy Selection as Markdown";
-  const labelArticle = ja ? "記事全文を Markdown としてコピー" : "Copy Article as Markdown";
 
   GM_registerMenuCommand(labelSelection, () => {
     const selection = window.getSelection();
