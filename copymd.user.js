@@ -4,7 +4,7 @@
 // @description     Copy page content as Markdown via menu commands.
 // @description:ja  ページ内容を Markdown としてコピーするメニューコマンドを追加します。
 // @namespace       https://github.com/gcrtnst/
-// @version         0.1.0
+// @version         0.2.0
 // @author          gcrtnst
 // @license         Unlicense
 // @homepageURL     https://github.com/gcrtnst/gm-copymd
