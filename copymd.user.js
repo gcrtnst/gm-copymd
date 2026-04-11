@@ -63,18 +63,25 @@
       }
     });
 
-    const markdown = turndown.turndown(container.innerHTML);
+    const markdown = turndown.turndown(container);
     GM_setClipboard(markdown);
   });
 
   GM_registerMenuCommand(labelArticle, () => {
-    const article = new Readability(document.cloneNode(true)).parse();
+    const article = new Readability(document.cloneNode(true), { serializer: (el) => el }).parse();
     if (!article) {
       GM_setClipboard("");
       return;
     }
 
-    const markdown = turndown.turndown(article.content);
+    const h1 = document.createElement("h1");
+    h1.innerText = article.title;
+
+    const container = document.createElement("div");
+    container.appendChild(h1);
+    container.appendChild(article.content);
+
+    const markdown = turndown.turndown(container);
     GM_setClipboard(markdown);
   });
 })();
